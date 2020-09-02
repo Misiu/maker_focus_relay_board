@@ -1,0 +1,7 @@
+{
+  "domain": "maker_focus_relay_board",
+  "name": "MakerFocus 4 Channel Relay Board Module",
+  "documentation": "https://github.com/Misiu/maker_focus_relay_board",
+  "requirements": ["smbus-cffi==0.5.1"],
+  "codeowners": ["@Misiu"]
+}

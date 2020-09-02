@@ -1,11 +1,7 @@
 {
-    "name": "Blueprint",
+    "name": "MakerFocus 4 Channel Relay Board Module",
     "hacs": "0.24.0",
-    "domains": [
-        "binary_sensor",
-        "sensor",
-        "switch"
-    ],
+    "domains": ["switch"],
     "iot_class": "Cloud Polling",
     "homeassistant": "0.110.0"
 }
