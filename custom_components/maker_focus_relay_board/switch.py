@@ -2,10 +2,7 @@
 import logging
 
 import smbus  # pylint: disable=import-error
-
-from pcal9535a import PCAL9535A
 import voluptuous as vol
-
 from homeassistant.components.switch import PLATFORM_SCHEMA, SwitchEntity
 from homeassistant.const import DEVICE_DEFAULT_NAME
 import homeassistant.helpers.config_validation as cv
@@ -16,10 +13,8 @@ CONF_I2C_BUS = "i2c_bus"
 CONF_I2C_ADDRESS = "i2c_address"
 CONF_PINS = "pins"
 
-
 CONF_INVERT_LOGIC = "invert_logic"
 CONF_STRENGTH = "strength"
-
 
 DEFAULT_I2C_ADDRESS = 0x10
 DEFAULT_I2C_BUS = 1
@@ -43,12 +38,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     i2c_bus = smbus.SMBus(bus)
 
-    pcal = PCAL9535A(bus, i2c_address)
-
     switches = []
     pins = config[CONF_PINS]
     for pin_num, pin_name in pins.items():
-        pin = pcal.get_pin(pin_num // 8, pin_num % 8)
         switches.append(I2CRelaySwitch(i2c_bus, i2c_address, pin_name, pin_num))
 
     add_entities(switches)
@@ -83,16 +75,16 @@ class I2CRelaySwitch(SwitchEntity):
     @property
     def assumed_state(self):
         """Return true if optimistic updates are used."""
-        return True
+        return False
 
     def turn_on(self, **kwargs):
         """Turn the device on."""
-        bus.write_byte_data(self._i2c_address, self._pin_num, 0xFF)
+        self._bus.write_byte_data(self._i2c_address, self._pin, 0xFF)
         self._state = True
         self.schedule_update_ha_state()
 
     def turn_off(self, **kwargs):
         """Turn the device off."""
-        bus.write_byte_data(self._i2c_address, self._pin_num, 0x00)
+        self._bus.write_byte_data(self._i2c_address, self._pin, 0x00)
         self._state = False
         self.schedule_update_ha_state()
