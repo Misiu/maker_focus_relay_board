@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - dev
+    paths-ignore:
+    - '.github/workflows/**'
 
 jobs:
   validate:
@@ -13,11 +15,10 @@ jobs:
     steps:
         - uses: "actions/checkout@v2"
 
-        - name: HACS validation
-          uses: "hacs/integration/action@master"
+        - name: HACS Action
+          uses: "hacs/action@main"
           with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            CATEGORY: "integration"
+            category: "integration"
 
         - name: Hassfest validation
           uses: "home-assistant/actions/hassfest@master"
