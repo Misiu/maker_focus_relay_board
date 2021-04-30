@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "documentation": "https://github.com/Misiu/maker_focus_relay_board",
   "issue_tracker": "https://github.com/Misiu/maker_focus_relay_board/issues",
+  "codeowners": ["@Misiu"],
   "requirements": ["smbus-cffi==0.5.1"],
-  "codeowners": ["@Misiu"]
+  "iot_class": "assumed_state"
 }
