@@ -38,10 +38,6 @@ switch:
 ```
 
 
-## Configuration will be done in the UI in the future
-
-<!---->
-
 ## Contributions are welcome!
 
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
