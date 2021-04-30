@@ -10,7 +10,7 @@
 
 _Component to integrate with [MakerFocus 4 Channel Relay Board Module][makerfocus]._
 
-**This component will set up the following platforms.**
+**This component will set up the following platforms:**
 
 Platform | Description
 -- | --
